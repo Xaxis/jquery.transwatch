@@ -11,6 +11,14 @@
   var
     plugin_name   = 'transwatch',
     defaults      = {
+      transitions: {
+        'transition': 'transitionend',
+        'OTransition': 'oTransitionEnd',
+        'MozTransition': 'transitionend',
+        'WebkitTransition': 'webkitTransitionEnd'
+      },
+      transition: '',
+      onEnd: null
     };
 
   // Plugin constructor
@@ -36,7 +44,22 @@
      * Manages TransitionEvent interface.
      */
     watchTransitionElement: function() {
-      // Do stuff here ...
+      var
+        plugin        = this;
+      for (var t in this.options.transitions) {
+        if (this.element.style[t] !== undefined) {
+          this.element.addEventListener(this.options.transitions[t], function(e) {
+            if (plugin.options.transition) {
+              if (e.propertyName == plugin.options.transition) {
+                plugin.options.onEnd.apply(null, [e, plugin.options.transitions[t]]);
+              }
+            } else {
+              plugin.options.onEnd.apply(null, [e, plugin.options.transitions[t]]);
+            }
+          });
+          return;
+        }
+      }
     }
   });
 
