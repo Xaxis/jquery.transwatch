@@ -11,7 +11,7 @@ module.exports = function(grunt) {
      */
     project: {
       js: [
-        'src/jquery.plugin.js'
+        'src/jquery.transwatch.js'
       ]
     },
 
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          'dist/jquery.plugin.min.js': ['src/jquery.plugin.js']
+          'dist/jquery.transwatch.min.js': ['src/jquery.transwatch.js']
         }
       }
     },
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   /**
-   * Deffine tasks
+   * Define tasks
    */
   grunt.registerTask('default', [
     'uglify',

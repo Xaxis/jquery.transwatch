@@ -2,9 +2,7 @@
 
 ## Summary
 
-A jQuery plugin scaffolding to assist in the rapid development of jQuery plugins.
-
-This is the jQuery plugin scaffolding I use to get started writing a new jQuery plugin.
+A jQuery plugin that acts as a wrapper for the JavaScript TransitionEvent interface.
 
 ## Author
 
