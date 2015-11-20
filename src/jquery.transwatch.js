@@ -51,10 +51,10 @@
           this.element.addEventListener(this.options.transitions[t], function(e) {
             if (plugin.options.transition) {
               if (e.propertyName == plugin.options.transition) {
-                plugin.options.onEnd.apply(null, [e, plugin.options.transitions[t]]);
+                plugin.options.onEnd.apply($(plugin.element), [e, plugin.options.transitions[t]]);
               }
             } else {
-              plugin.options.onEnd.apply(null, [e, plugin.options.transitions[t]]);
+              plugin.options.onEnd.apply($(plugin.element), [e, plugin.options.transitions[t]]);
             }
           });
           return;

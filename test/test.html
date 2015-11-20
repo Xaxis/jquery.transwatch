@@ -32,7 +32,7 @@
         $('#elm-1').transwatch({
             transition: 'opacity',
             onEnd: function(e) {
-                console.log('transition end!', e);
+                console.log('transition end!', this, e);
             }
         });
 
