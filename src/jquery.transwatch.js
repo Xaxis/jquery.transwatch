@@ -46,18 +46,20 @@
     watchTransitionElement: function() {
       var
         plugin        = this;
-      for (var t in this.options.transitions) {
-        if (this.element.style[t] !== undefined) {
-          this.element.addEventListener(this.options.transitions[t], function(e) {
-            if (plugin.options.transition) {
-              if (e.propertyName == plugin.options.transition) {
+      if (this.options.onEnd) {
+        for (var t in this.options.transitions) {
+          if (this.element.style[t] !== undefined) {
+            this.element.addEventListener(this.options.transitions[t], function(e) {
+              if (plugin.options.transition) {
+                if (e.propertyName == plugin.options.transition) {
+                  plugin.options.onEnd.apply($(plugin.element), [e, plugin.options.transitions[t]]);
+                }
+              } else {
                 plugin.options.onEnd.apply($(plugin.element), [e, plugin.options.transitions[t]]);
               }
-            } else {
-              plugin.options.onEnd.apply($(plugin.element), [e, plugin.options.transitions[t]]);
-            }
-          });
-          return;
+            });
+            return;
+          }
         }
       }
     }
